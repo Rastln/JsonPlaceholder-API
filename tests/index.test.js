@@ -43,6 +43,28 @@ describe('Testing the GET functions', ()=> {
     })
 })
 
+const newUser = {
+    "postId": 1,
+    "id": 6,
+    "name": "Youuuu shall not pass",
+    "email": "WhiteWizard@bestmagic.com",
+    "body": "I have no idea what is supposed to go in here"
+}
+
+describe('This is to test the POST method', () => {
+    it('posts/1/comments', (done) => {
+        
+        request(app)
+            .post('/posts/1/comments')
+            .set('Accept', 'application/json')
+            .send(newUser)
+            .expect(`These have been added: postID: ${newUser['postId']}, id: ${newUser['id']}, name: ${newUser['name']}, email: ${newUser['email']}, body: ${newUser['body']}`)
+            .expect(200, done)
+    })
+})
+
+
+
 const usersposts = [
     {
       "userId": 1,

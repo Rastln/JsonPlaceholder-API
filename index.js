@@ -62,5 +62,29 @@ app.get('/users/1/:type', (req, res) => {
         })
 })
 
+app.post('/posts/1/comments', (req, res) => {
+    const postIDtag = req.body.postId
+    const idtag = req.body.id
+    const nametag = req.body.name
+    const emailtag = req.body.email
+    const bodytag = req.body.body
+    fetch('https://jsonplaceholder.typicode.com/posts/1/comments', {
+    method: 'POST',
+    body: JSON.stringify({
+      postID: postIDtag,
+      id: idtag,
+      name: nametag,
+      email: emailtag,
+      body: bodytag
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    res.send(`These have been added: postID: ${postIDtag}, id: ${idtag}, name: ${nametag}, email: ${emailtag}, body: ${bodytag}`)
+  })
+})
 
 module.exports = app
