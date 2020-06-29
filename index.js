@@ -48,6 +48,12 @@ app.get('/users/1/:type', (req, res) => {
             .then(data => {
                 res.send(data)
             })
+    else if(type == "todos")
+    fetch(url + '/users/1/todos')
+        .then(response => response.json())
+        .then(data => {
+            res.send(data)
+        })
 })
 
 
