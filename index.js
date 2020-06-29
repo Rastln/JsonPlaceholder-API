@@ -40,6 +40,15 @@ app.get('/albums/1/photos', (req, res) => {
             res.send(data)
         })
 })
+app.get('/users/1/:type', (req, res) => {
+    const type = req.params.type
+    if(type == "albums")
+        fetch(url + '/users/1/albums')
+            .then(response => response.json())
+            .then(data => {
+                res.send(data)
+            })
+})
 
 
 module.exports = app
