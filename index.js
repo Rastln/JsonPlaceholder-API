@@ -54,6 +54,12 @@ app.get('/users/1/:type', (req, res) => {
         .then(data => {
             res.send(data)
         })
+    else if(type == "posts")
+    fetch(url + '/users/1/posts')
+        .then(response => response.json())
+        .then(data => {
+            res.send(data)
+        })
 })
 
 
